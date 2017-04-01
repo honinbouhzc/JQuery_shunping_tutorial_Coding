@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Get Post</title>
+	<meta charset="utf-8">
+	<script type="text/javascript" src='./jquery-3.1.1.min.js'></script>
+	<style type="text/css">
+		#one{
+			width: 240px;
+			height: 240px;
+			border: 1px solid #000;
+			background-color:grey;
+			margin: 20px;
+		}
+	</style>
+</head>
+<body>
+	<form action="" name="f1" id="f1">
+	<input type="text" name="username" id="username" value="Eric Han"><br>
+	<input type="text" name="password" id="password" value="1q2w3e"><br>
+	<input type="button" value="login" id="b1">
+</form>
+<div id="one">Record</div>
+
+</body>
+	<script type="text/javascript">
+		//post
+		//这个方法补依赖于一个jq对象
+		//1.第一参数是把ajax请求发送给url
+		//2.表示是否发送数据，如果发送数据，格式应当是（key：value），不发送数据，可以填入null。
+		//如果发送数据给服务器load方法以post方法提交，否则是以get方式提交。
+		//3。第三个参数是回调函数
+		//4。回调函数的两个参数，第一个是data表示从服务器会送的数据（string），第二是textState表示状态有4个（success,error,notmodify,timeout）
+	$('#b1').click(function(){
+		var send_data ={'username':$('#username'),'age':'31',};
+		var xmlHttpRequest = $.post("loadController.php",send_data,function(data,textState){
+			//如果服务器返回的是文本
+			//alert(data);
+			//如果服务器返回的是JSON
+			// var objs = eval("('+ data +')");//dom对象
+			// var objs = $(objs)
+			// $(objs).each(function(){
+			// 	alert(this.res + this.info);
+			// });
+			//如果服务器返回的是XML
+			var xmlobjs = xmlHttpRequest.responseXML;
+			//用DOM来解析
+			var res = xmlobjs.getElementByTagName('res');
+			alert(res[0].childNodes[0].nodeValue);
+		});
+	});
+	</script>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>属性过滤选择器</title>
+	<meta charset="utf-8">
+	<script type="text/javascript" src='./jquery-3.1.1.min.js'></script>
+	<style type="text/css">
+		
+	</style>
+</head>
+<body>
+	<input type="button" id="b1" value="含有属性title的div元素">
+	<input type="button" id="b2" value="属性title值等于test的div元素">
+	<input type="button" id="b3" value="属性title值不等于test的div元素（没有属性title的也将被选中）">
+	<input type="button" id="b4" value="属性title值以te开头的div元素">
+	<input type="button" id="b5" value="属性title值以est结尾的div元素">
+	<input type="button" id="b6" value="属性title值含有es的div元素">
+	<input type="button" id="b7" value="选取含有属性id的div元素，然后再结果中xuanqu属性title值含有es的div元素"><br>
+	<input type="hidden" value="hidden1">
+	<input type="hidden" value="hidden2">
+	<input type="hidden" value="hidden3">
+
+	<div id="one" title="test">div id = one, test</div>
+	<div id="one" title="texxx">div id = one, texxx</div>
+	<div id="one" title="texxx">div id = one, texxx</div>
+	<div id="one" title="texxx">div id = one, texxx</div>
+	<div id="one" title="xxxesxxxt">div id = one, xxxesxxxt</div>
+	<div id='two' title="ate">aaaaaaaaaaaaaaaaaaaaa</div>
+	<div id="three" class="one">xxxxxxxxxxxxx</div>
+</body>
+<script type="text/javascript">
+	$('#b1').click(function(){//含有属性title的div元素
+		$('div[title]').css('background','green');
+	});
+	$('#b2').click(function(){//属性title值等于test的div元素
+		$("div[title='test']").css('background','red');
+	});
+	$('#b3').click(function(){//属性title值不等于test的div元素（没有属性title的也将被选中）
+		$("div[title!='test']").css('background','blue');
+	});
+	$('#b4').click(function(){//属性title值以te开头的div元素
+		$("div[title^= 'te']").css('background','orange');
+	});
+	$('#b5').click(function(){//属性title值以est结尾的div元素
+		$("div[title$='est']").css('background','grey');
+	});
+	$('#b6').click(function(){//属性title值含有es的div元素
+		$("div[title*='es']").css('background','yellow');
+	});
+	$('#b7').click(function(){//选取含有属性id的div元素，然后再结果中xuanqu属性title值含有es的div元素
+		$("div[id][title*='es']").css('background','purple');
+	});
+</script>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>基本选择器</title>
+	<meta charset="utf-8">
+	<script type="text/javascript" src='./jquery-3.1.1.min.js'></script>
+	<style type="text/css">
+		.mini{			
+			border: 1px solid black;
+			width:70px;
+			height:70px;
+			clear: both;
+		}
+		.large{
+			border: 1px solid black;
+			width: 300px;
+			height: 300px;
+		}
+	</style>
+</head>
+<body>
+	<input type="button" id="b1"  value="改变id为one的元素的背景色为#0000ff" onclick="abc()">
+	<input type="button" id="b2" value="改变class为mini的所有元素的背景色为#ff0033">
+	<input type="button" id="b3" value="改变元素名为div的所有元素的背景色为#00ffff">
+	<input type="button" id="b4" value="改变所有元素的背景色为#00ff33">
+	<input type="button" id="b5" value="改变所有的span元素和id为two的元素的背景色为#3399ff"><br>
+	<div id="one" class="mini">div id = one</div>
+	<div id="two" class="large">div id = two</div>
+	<div id="three" class="mini">div id = three</div>
+	<span class="large">span one</span>
+	<span class="large">span two</span>
+</body>
+<script type="text/javascript">
+	//传统方法
+	function abc(){
+		var one_obj = document.getElementById('one');
+		one_obj.style.background = '#0000ff';
+	}
+
+	//Jq方法 id选择器和按钮绑定click事件
+	// $('#b1').click(function(){
+	// 	$('#one').css('background','#0000ff');
+	// });
+	$('#b2').click(function(){ //类选择器
+		$('.mini').css('background','#ff0033');
+	});
+
+	$('#b3').click(function(){//元素选择器
+		$('div').css('background','#00ffff');
+	});
+
+	$('#b4').click(function(){//通配符选择器	
+		$('*').css('background','#00ff33');
+	});
+
+	$('#b5').click(function(){ //用逗号连接多个选择器
+		$('span,#two').css('background','#3399ff');
+	});
+</script>
+</html>

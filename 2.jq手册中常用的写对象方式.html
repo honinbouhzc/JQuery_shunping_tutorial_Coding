@@ -1,0 +1,15 @@
+<script type="text/javascript" src='./jquery-3.1.1.min.js'></script>
+<script type="text/javascript">
+	function Dog(){
+	}
+
+	Dog.prototype={
+		ready:function(){
+			window.alert('ok');
+		},
+		'jquery':'3.1.1'
+	}
+	var dog1 = new Dog();
+	dog1.ready();
+	window.alert('dog1.jquery');
+</script>

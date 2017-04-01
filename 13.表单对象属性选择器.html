@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>表单对象属性选择器</title>
+	<meta charset="utf-8">
+	<script type="text/javascript" src='./jquery-3.1.1.min.js'></script>
+</head>
+<body>
+<input type="button" id="b1" value="利用jq对象的val（）方法改变表单没type=text可用的input元素">
+<input type="button" id="b2" value="利用jq对象的val（）方法改变表单没type=text不可用的input元素">
+<input type="button" id="b3" value="利用jq对象的length属性获取多选框种选中的个数">
+<input type="button" id="b4" value="利用jq对象的text方法获取下拉框中选中的内容"><br>
+
+<input type="text" value="soccer1">
+<input type="text" value="soccer2">
+<input type="text" value="soccer3" disabled="true">
+<input type="text" value="soccer4" disabled="true"><br>
+
+<input type="checkbox" value="b1">b1
+<input type="checkbox" value="b2">b2
+<input type="checkbox" value="b3">b3
+<input type="checkbox" value="b4">b4
+<input type="checkbox" value="b5">b5
+<input type="checkbox" value="b6">b6
+<input type="checkbox" value="b7">b7<br>
+
+<select name="job" multiple="multiple" size="6">
+	<option value='a1'>a1^</option>
+	<option value='a2'>a2^</option>
+	<option value='a3'>a3^</option>
+	<option value='a4'>a4^</option>
+	<option value='a5'>a5^</option>
+	<option value='a6'>a6^</option>
+</select><br>
+
+<select id="hsp" name="edu">
+	<option value='1'>1</option>
+	<option value='2'>2</option>
+	<option value='3'>3</option>
+	<option value='4'>4</option>
+	<option value='5'>5</option>
+</select>
+
+</body>
+<script type="text/javascript">
+	$('#b1').click(function(){//利用jq对象的val（）方法改变表单没type=text可用的input元素
+		$("input[type='text']:enabled").val('hello');
+	});
+	$('#b2').click(function(){//利用jq对象的val（）方法改变表单没type=text不可用的input元素
+		$("input[type='text']:disabled").val('Goodbye');
+	});
+	$('#b3').click(function(){//利用jq对象的length属性获取多选框种选中的个数
+		//var num2 = $(":checkbox:checked");
+		//alert(num2.length);另一种方法
+		var num1 = $("input[type='checkbox']:checked");
+		alert(num1.length);
+	});
+	$('#b4').click(function(){//利用jq对象的text()方法获取下拉框中选中的内容
+		// var t1 = $("select option:selected").text();
+		// alert(t1);
+
+		// var t1 = $("select option:selected").val();
+		// alert(t1);//第一个value属性
+		
+		var obj3 = $("select option:selected");
+		obj3.each(function(){
+			alert($(this).val());
+		});
+	});
+
+	//val()获取第一个匹配元素的当前值
+	//text()获取所有的元素内容
+</script>
+</html>

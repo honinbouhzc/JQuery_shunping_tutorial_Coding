@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JQ对象集合的4种遍历方法</title>
+	<meta charset="utf-8">
+	<script type="text/javascript" src='./jquery-3.1.1.min.js'></script>
+</head>
+<body>
+	<input type="button" id="b4" value="利用jq对象的text方法获取下拉框中选中的内容"><br>
+	<select name="job" multiple="multiple" size="6">
+	<option value='a1'>a1^</option>
+	<option value='a2'>a2^</option>
+	<option value='a3'>a3^</option>
+	<option value='a4'>a4^</option>
+	<option value='a5'>a5^</option>
+	<option value='a6'>a6^</option>
+</select><br>
+</body>
+<script type="text/javascript">
+	$('#b4').click(function(){//利用jq对象的text()方法获取下拉框中选中的内容
+		// var t1 = $("select option:selected").text();
+		// alert(t1);
+
+		// var t1 = $("select option:selected").val();
+		// alert(t1);//第一个value属性
+
+
+		//-------JQ对象集合的四种遍历方法--------//
+		// var obj1 = $("select option:selected");
+		// $.each(obj1,function(){
+		// 	alert($(this).val());
+		// });
+
+		// var obj2 = $("select option:selected");
+		// $.each(obj2,function(i,n){
+		// 	alert(n.value);  //dom方法
+		// 	alert($(n).val());//JQ方法
+		// });
+
+		// var obj3 = $("select option:selected");
+		// obj3.each(function(){
+		// 	alert($(this).val());
+		// });
+
+		var obj4 = $('select option:selected');
+		obj4.each(function(i,n){
+			//alert(n.value);//dom
+			alert($(n).val());//jq
+		});
+	});	
+</script>
+</html>

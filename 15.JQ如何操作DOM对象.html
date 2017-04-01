@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JQ如何操作DOM对象</title>
+	<meta charset="utf-8">
+	<script type="text/javascript" src='./jquery-3.1.1.min.js'></script>
+	<style type="text/css">
+		.one{
+			width: 140px;
+			height: 140px;
+			margin: 20px;
+			background-color: #9999cc;
+			border: #000 1px solid;
+			float:left;
+			font-size: 17px;
+			font-family: Roman;
+		}
+	</style>
+</head>
+<body>
+<h1>查找节点</h1>
+	<ul>
+	<li>查找属性节点，通过JQ选择器完成</li>
+	<li>查找属性节点，查找到所需要的元素之后，可以通过JQ对象的attr()方法来获取</li>	
+	</ul>
+
+	<input type="button" id="b1" value="获取class和设置class都可以使用attr（）方法来完成给id为first添加.one样式">
+	<input type="button" id="b2" value="增加样式：addClass方法给id为first添加.one样式">
+	<input type="button" id="b3" value="移除样式：removerClass--从匹配元素种删除全部或指定的class样式（给id为first删除one样式）">
+	<input type="button" id="b4" value="切换样式：toggleClass（）控制样式上的重复切换，如果类名存在则删除他，如果类名不存在则添加他（给id为first切换one样式）">
+	<input type="button" id="b5" value="判断是否有某个样式：hasClass（）：判断元素种是否有某个class如果有则返回true，否则返回false"><br>
+
+	<div id="first">first block</div>
+	<div id="second">second block</div>
+</body>
+<script>
+	//获取class和设置class都可以使用attr（）方法来完成给id为first添加.one样式"
+	$('#b1').click(function(){
+		$('#first').attr('class','one');
+	});
+
+	//增加样式：addClass方法给id为first添加.one样式
+	$('#b2').click(function(){
+		$('#first').addClass('one');
+	});
+
+	//移除样式：removerClass--从匹配元素种删除全部或指定的class样式（给id为first删除one样式）
+	$('#b3').click(function(){
+		$('#first').removeClass('one');
+	});
+	
+	//切换样式：toggleClass（）控制样式上的重复切换，如果类名存在则删除他，如果类名不存在则添加他（给id为first切换one样式）
+	$('#b4').click(function(){
+		$('#first').toggleClass('one');
+	});
+
+	//判断是否有某个样式：hasClass（）：判断元素种是否有某个class如果有则返回true，否则返回false
+	$('#b5').click(function(){
+		alert($('#first').hasClass('one'));
+	});
+</script>
+</html>

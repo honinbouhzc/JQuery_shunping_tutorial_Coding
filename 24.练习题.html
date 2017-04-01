@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Test2</title>
+	<meta charset="utf-8">
+	<script type="text/javascript" src='./jquery-3.1.1.min.js'></script>
+</head>
+<body>
+<div style="text-align: center">
+	<br><br>添加用户：<br><br>
+	姓名：<input type="text" name="name" id="name">&nbsp;&nbsp;&nbsp;
+	邮箱: <input type="text" name="email" id="email">&nbsp;&nbsp;&nbsp;
+	电话：<input type="text" name="tel" id="tel"><br><br>
+	<button id="addUser">提交</button><br><br><hr><br><br>
+	<table id="usertable" border="1" cellpadding="5" cellspacing="5">
+		<tbody>
+			<tr><th>Name</th><th>Email</th><th>Tel</th><th>&nbsp;</th></tr>
+			<tr><td>Tom</td><td>tom@tom.com</td><td>5000</td><td><a href="deleteEmp?id=Tom">Delete</a></td></tr>
+		</tbody>
+	</table>
+</div>
+</body>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#addUser').click(function(){			
+			var $in_name = $('#name').val();
+			var $in_email = $('#email').val();
+			var $in_tel = $('#tel').val();
+
+			//一步到位法
+			//$tr =$("<td> " + $in_name + "</td><td>" +$in_email + "</td><td>" + $in_tel + "</td><td><a href='#'>Delete</a></td>");
+
+			//逐步法
+			$tr = $('<tr></tr>');
+			$name_td = $('<td></td>');
+			$name_td.text($in_name);
+			$email_td = $('<td></td>');
+			$email_td.text($in_email)
+			$tel_td = $('<td></td>');
+			$tel_td.text($in_tel);
+			$a_td = $('<td></td>');
+			$myHref=$('<a></a>');
+			$myHref.text('Delete');
+			$myHref.attr("href","deleteEmp?name=" +$in_name);
+			//超链接绑定事件
+			$myHref.click(function(){
+				var b = window.comfirm($(this).parent().parent().children().eq(0).text());
+				if(b){
+					$(this).parent().parent().remove();
+					return false;
+				}else{
+					return false;
+				}
+				
+			});
+			$a_td.append($myHref);
+			$tr.append($name_td);
+			$tr.append($email_td);
+			$tr.append($tel_td);
+			$tr.append($a_td);
+
+			$('#usertable tbody').append($tr);
+		});
+
+
+
+
+	});
+</script>
+</html>

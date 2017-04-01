@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<script type="text/javascript" src='./jquery-3.1.1.min.js'></script>
+</head>
+<body>
+
+	<label><input type="checkbox" name="hobby" id="soccer">Soccer</label>
+	<label><input type="checkbox" name="hobby" id="rugby">Rugby</label>
+	<label><input type="checkbox" name="hobby" id="football">Football</label>
+	<label><input type="checkbox" name="hobby" id="basketball">Basketball</label>
+	<label><input type="checkbox" name="hobby" id="tennis">Tennis</label><br>
+	<input type="button" id="button" value="submit">
+
+</body>
+	<script type="text/javascript">
+		$('#button').click(function(){
+			var input_obj = $("input[type='checkbox']").attr('checked',true);
+			$.each(input_obj,function(i,n){
+				document.write($(this).val() + '<br>');
+			});
+		});
+	</script>
+</html>

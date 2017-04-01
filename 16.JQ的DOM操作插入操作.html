@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JQ的DOM操作插入操作</title>
+	<meta charset="utf-8">
+	<script type="text/javascript" src='./jquery-3.1.1.min.js'></script>
+	<style type="text/css">
+		div,span{
+			width: 140px;
+			height: 140px;
+			margin: 20px;
+			background-color: #9999cc;
+			border: #000 1px solid;
+			float:left;
+			font-size: 17px;
+			font-family: Roman;
+		}
+
+		div.mini{
+			width: 30px;
+			height: 30px;
+			background-color: #cc66ff;
+			border: #000 1px solid;
+			font-size: 12px;
+			font-family: Roman;
+		}
+	</style>
+</head>
+<body>
+	<input type="button" id="b1" value="添加一个li重庆到上海下面">
+	<input type="button" id="b2" value="添加一个li成都到北京上面">
+	<input type="button" id="b3" value="添加一个li沈阳到北京上海中间">
+	<br><ul id="city">
+		<li id="bj" name="beijing">北京</li>
+		<li id="sh" name="shanghai">上海</li>
+	</ul>
+</body>
+<script type="text/javascript">
+	//添加一个li重庆到上海下面
+	$('#b1').click(function(){
+		//jq方法
+		//<li id="cq" name="chongqing">重庆</li>
+		//两种方式
+		/*第一种
+		$myli = $("<li id='cq' name='chongqing'>重庆</li>");
+		//先使用内部插入法
+		$('#city').append($myli);//append()再city对象内部添加一个$myli */
+
+		//方法二
+		$myli = $("<li></li>");
+		$myli.text("重庆");//<li>重庆</li>
+		$myli.attr('id','cq');//<li id='cq'>重庆</li>
+		$myli.attr('name','chongqinhg');//<li id='cq' name='chongqing'>重庆</li>
+		//$('#city').append($myli);//添加对象到上海后面
+		$myli.appendTo($('#city'));//或者用appendTo方法，同样的效果
+
+	});
+
+	//添加一个li成都到北京上面
+	$('#b2').click(function(){
+		//jq方法
+		$myli = $("<li id='cd' name='chengdu'>成都</li>");
+		$('#city').prepend($myli);
+		//$myli.prependTo($('#city'));
+	});
+
+	//外部插入法
+	//添加一个li沈阳到北京上海中间
+	$('#b3').click(function(){
+		//$myli = $("<li id='sy' name='shenyang'>沈阳</li>");		
+		//$('#bj').after($myli);
+		//$('#sh').before($myli);
+		
+		$myli =$('<li></li>');
+		$myli.text('沈阳');
+		$myli.attr('id','sy');
+		$myli.attr('name','shenyang');
+		//$myli.insertAfter($('#bj'));
+		$myli.insertBefore($('#sh'));
+	});
+</script>
+</html>

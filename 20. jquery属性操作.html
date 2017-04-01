@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> jquery属性操作</title>
+	<meta charset="utf-8">
+	<script type="text/javascript" src='./jquery-3.1.1.min.js'></script>
+</head>
+<body>
+<h1>属性操作</h1>
+<p>在JQ中有很多方法都是一个函数实现获取和设置，如：attr(),html(),text(),val(),height(),width(),css()</p>
+<p>removeAttr():删除指定元素的指定属性</p>
+
+<div id=loginFrom>
+<!-- value 就是默认值，可以通过this.defaultValue来访问-->
+	用户名：<input type="text" name="user" id="user" value="User Name"><br>
+	密  码: <input type="text" name="pass" id="pass"><br>
+	<input type="button" name="submit" value="submit">
+</div>
+</body>
+<script type="text/javascript">
+	$(document).ready(function(){
+		//当dom对象加载完毕后，给user绑定一个focus事件
+		$('#user').focus(function(){
+
+			//获取当前值	
+			$curVal = $(this).val();
+			if ($curVal == this.defaultValue) {
+				$(this).val("");
+			} else {
+				$(this).val($curVal);
+			}
+		});
+
+		$('#user').blur(function(){
+			$curVal = $(this).val();
+			if ($curVal == "") {
+				$(this).val(this.defaultValue);
+			} else {
+				$(this).val($curVal);
+			}
+		});
+
+	});
+</script>
+</html>

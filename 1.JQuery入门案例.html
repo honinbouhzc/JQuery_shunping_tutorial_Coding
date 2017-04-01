@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JQuery 入门</title>
+	<meta charset="utf-8">
+	<script type="text/javascript" src='./jquery-3.1.1.min.js'></script>
+	<script type="text/javascript">
+	//$(document)是一个JQ对象
+	//document 是dom对象
+	//再jq开发中有以上两种类型的对象，如果是jq对象则只能使用JQ库提供的方法；如果是dom对象，则只能是用js本身提供的方法。
+
+
+	//使用JQ再网页打开时，提出一句话
+		$(document).ready(function(){//ready方法相当于js中的onload();
+			alert('hello,world!');
+		});
+
+	//什么事jq对象？通过jq包装dom对象后上的对象
+	//比如：  $('#test').html();
+	//相当于: document.getElementById('test').innerHTML;
+	//jq对象不能使用dom的方法；		
+	</script>
+</head>
+<body>
+
+</body>
+</html>

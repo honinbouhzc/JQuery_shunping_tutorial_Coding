@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>子元素选择器</title>
+	<meta charset="utf-8">
+	<script type="text/javascript" src='./jquery-3.1.1.min.js'></script>
+	<style type="text/css">
+		
+	</style>
+</head>
+<body>
+<p></p>
+	<input type="botton" id="b1" value="选择每个class为one的div父元素虾的第二个子元素">
+	<input type="botton" id="b2" value="选择每个class为one的div父元素虾的第一个子元素">
+	<input type="botton" id="b3" value="选择每个class为one的div父元素虾的最后一个子元素">
+	<input type="botton" id="b4" value="如果class为one的div的父元素下仅仅有一个子元素，那么选中它"><br>
+
+	<div class="one">
+		<div id="one" class="one">xxxxxxx one</div>
+		<div id="two" class="one">xxxxxxx two</div>
+		<div id="three" class="one">xxxxxxx three</div>
+		<div id="four" class="one">xxxxxxx four</div>
+	</div><br>
+
+	<div class="one">
+		<div id="one" class="one">xxxxxxx one</div>
+	</div>
+</body>
+<script type="text/javascript">
+	$('#b1').click(function(){//每个class为one的div父元素虾的第二个子元素
+		$('div .one:nth-child(2)').css('background','red');
+	});
+	$('#b2').click(function(){//每个class为one的div父元素虾的第一个子元素
+		//等价于$('div .one:nth-child(1)')
+		$('div .one:first-child').css('background','blue');
+	});
+	$('#b3').click(function(){//每个class为one的div父元素虾的最后一个子元素
+		$('div .one:last-child').css('background','green');
+	});
+	$('#b4').click(function(){//如果class为one的div的父元素下仅仅有一个子元素，那么选中它
+		$('div .one:only-child').css('background','yellow');
+	});
+</script>
+</html>

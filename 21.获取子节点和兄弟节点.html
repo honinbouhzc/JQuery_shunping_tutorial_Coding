@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>获取子节点和兄弟节点</title>
+	<meta charset="utf-8">
+	<script type="text/javascript" src='./jquery-3.1.1.min.js'></script>
+	<style type="text/css">
+		
+	</style>
+</head>
+<body>
+	<input type="button" id="b1" value="查找所有子元素">
+	<input type="button" id="b2" value="获取后面的同辈元素">
+	<input type="button" id="b3" value="获取前面的同辈元素"><br>
+	<input type="button" id="b4" value="获取所有的同辈元素"><br>
+
+	<div class="o1">ccccccccccc</div>
+	<div class="one">
+		<div id="one">
+			XXXXXXXXXXXXXX one
+		</div>
+
+		<div id="two">
+			XXXXXXXXXXXXXX two
+		</div>
+
+		<div id="three">
+			XXXXXXXXXXXXXX three
+		</div>
+
+		<div id="four">
+			XXXXXXXXXXXXXX four
+		</div>
+	</div>
+
+	<div>ttttttttttttttt</div>
+</body>
+<script type="text/javascript">
+	//查找所有子元素
+	$('#b1').click(function(){
+		$('.one').children().each(function(){
+			alert($(this).text());
+			//制定获取第几个子元素eq(index);
+		//$('.one').children().eq(0).text();
+		});
+	});
+
+	//获取后面的一个同辈元素，获取后面所有的用nextAll（）；
+	$('#b2').click(function(){
+		$('.one').next().each(function(){
+			alert($(this).text());
+		});
+	});
+
+	//获取前面的一个同辈元素
+	$('#b3').click(function(){
+		$('.one').prev().each(function(){
+			alert($(this).text());
+		});
+	});
+
+	//获取所有的同辈元素
+	$('#b4').click(function(){
+		$('.one').siblings().each(function(){
+			alert($(this).text());
+		});
+	});
+</script>
+</html>

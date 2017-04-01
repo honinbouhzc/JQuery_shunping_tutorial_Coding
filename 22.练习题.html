@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Test 1</title>
+	<meta charset="utf-8">
+	<script type="text/javascript" src='./jquery-3.1.1.min.js'></script>
+</head>
+<body>
+<form method="post" action="">
+	请选择你的爱好：<br>
+	<input type="checkbox" id="checkboxAll_2">全选/全不选<br>
+	<input type="checkbox" name="items" value="soccer">Soccer
+	<input type="checkbox" name="items" value="football">Football
+	<input type="checkbox" name="items" value="rugby">Rugby
+	<input type="checkbox" name="items" value="basketball">Basketball<br>
+	<input type="button" id="checkedAll" value="全 选">
+	<input type="button" id="checkedNo" value="全不选">
+	<input type="button" id="checkedRev" value="反 选">
+	<input type="submit" id="submit" value="提交">
+</form>
+</body>
+<script type="text/javascript">
+	$('#checkboxAll_2').click(function(){
+		if(this.checked){
+			$('input[name="items"]').attr('checked','checked');
+		}else{
+			$('input[name="items"]').removeAttr('checked');
+		};
+	});
+
+	$("#checkedAll").click(function(){
+		$('input[name="items"]').attr('checked','checked');
+	});
+
+	$('#checkedNo').click(function(){
+		$("input[name='items']").removeAttr("checked");
+	});
+
+	$('#checkedRev').click(function(){
+		$("input[name='items']").each(function(){
+			if (this.checked) {
+				$(this).removeAttr("checked");
+			} else {
+				$(this).attr('checked','checked')
+			}
+		});
+	});
+</script>
+</html>

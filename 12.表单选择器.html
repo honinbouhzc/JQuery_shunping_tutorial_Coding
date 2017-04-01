@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>表单选择器</title>
+	<meta charset="utf-8">
+	<script type="text/javascript" src='./jquery-3.1.1.min.js'></script>
+	<style type="text/css"></style>
+</head>
+<body>
+	<form>
+		Text:<input type="text" name=""><br>
+		checkbox:<input type="checkbox" name=""><br>
+		radio:<input type="radio" name=""><br>
+		image:<input type="image" name=""><br>
+		file:<input type="file" name=""><br>
+		<input type="submit" name="" value="submit"><br>
+		<input type="reset" name="" value="reset"><br>
+		password:<input type="password" name=""><br>
+		<input type="button" name="" value="button1"><br>
+		<select><option>option</option></select><br>
+		<textarea>textarea</textarea><br>
+		<button>button2</button><br>
+	</form>
+</body>
+<script type="text/javascript">
+//选择所有的button;
+var buttons = $(':button');
+alert(buttons.length);
+
+var button1 = $("input[type='button']");//只有一个button
+alert(button1.length);
+//我们再获取表单元素的时候有两种方式：
+//1：$('表单元素名'){input,file,button.image....}这种方式选择最全
+//2：$("input[type='button']")这种只能选择<input type="button" >
+</script>
+</html>

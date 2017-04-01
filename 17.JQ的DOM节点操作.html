@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JQ的DOM节点操作</title>
+	<meta charset="utf-8">
+	<script type="text/javascript" src='./jquery-3.1.1.min.js'></script>
+	<style type="text/css">
+		div,span{
+			width: 140px;
+			height: 140px;
+			margin: 20px;
+			background-color: #9999cc;
+			border: #000 1px solid;
+			float:left;
+			font-size: 17px;
+			font-family: Roman;
+		}
+
+		div.mini{
+			width: 30px;
+			height: 30px;
+			background-color: #cc66ff;
+			border: #000 1px solid;
+			font-size: 12px;
+			font-family: Roman;
+		}
+	</style>
+</head>
+<body>
+	<input type="button" id="b1" value="使用外部插入法，再伤害后面创建一个反恐li，并制定id和name">
+	<input type="button" id="b2" value="使用外部插入法，把反恐li移动到天津后面">
+	<input type="button" id="b3" value="使用内部插入法，把传奇插入到天津后面">
+	<input type="button" id="b4" value="删除所有p">
+	<input type="button" id="b5" value="清空所有p">
+	<input type="button" id="b6" value="删除上海这个li">
+
+	<br><ul id="city">
+		<li id="bj" name="beijing">北京</li>
+		<li id="sh" name="shanghai">上海</li>
+		<li id="tj" name="tianjin">天津</li>
+	</ul>
+
+	你爱好的游戏：<br>
+	<ul>
+		<li id="fk" name="fankong">反恐</li>
+		<li id="cq" name="chuangqi">传奇</li>
+	</ul>
+
+	<p>Hello</p>How are<p>you？</p>
+	<p name="test">Hello,<span>Person</span><a href="#">a</a></p>
+</body>
+<script type="text/javascript">
+//使用外部插入法，再伤害后面创建一个反恐li，并制定id和name
+	$('#b1').click(function(){
+		$myli = $("<li></li>");
+		$myli.text('反恐');
+		$myli.attr('id','fk');
+		$myli.attr('name','fankong');
+		$myli.insertAfter($('#sh'));
+	});
+
+	//使用外部插入法，把反恐li移动到天津后面
+	$('#b2').click(function(){
+		$('#tj').after($('#fk'));
+	});
+
+	//使用内部插入法，把传奇插入到天津后面
+	$('#b3').click(function(){
+		$('#city').append($('#cq'));
+	});
+
+	//删除所有p
+	$("#b4").click(function(){
+		$("p").remove();
+	});
+
+	//清空所有p
+	$('#b5').click(function(){
+		$('p').empty();
+	});
+
+	//删除上海这个li
+	$('#b6').click(function(){
+		$('#sh').remove();
+	});
+</script>
+</html>

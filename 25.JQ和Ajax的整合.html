@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<script type="text/javascript" src='./jquery-3.1.1.min.js'></script>
+	<style type="text/css">
+		#one{
+			width: 240px;
+			height: 240px;
+			border: 1px solid #000;
+			background-color:grey;
+			margin: 20px;
+		}
+	</style>
+</head>
+<body>
+<h1>传统的Ajax步骤：</h1>
+<ol>
+	<li>创建xmlHttpRequest对象</li>
+	<li>拼接url和data</li>
+	<li>xmlHttpRequest.open()</li>
+	<li>指定回调函数：xmlHttpRequest.onreadystatechange = 函数;</li>
+	<li>xmlHttpRequest.send();</li>
+</ol>
+
+<h1>Jquery的AJax的整合</h1>
+<ol>
+	<li>jquery.load：载入远程的html文件代码插入至DOM中</li>
+	<li>$.get()</li>
+	<li>$.post()</li>
+</ol>
+
+<form action="" name="f1" id="f1">
+	<input type="text" name="username" id="username" value="Eric Han"><br>
+	<input type="text" name="password" id="password" value="1q2w3e"><br>
+	<input type="button" value="login" id="b1">
+</form>
+<div id="one">Record</div>
+</body>
+<script type="text/javascript">
+	$(document).ready(function(){
+		//load的get提交
+		$('#b1').click(function(){/*
+			//使用jquery提供的方法来发送ajax请求
+			//1.第一参数是把ajax请求发送给url
+			//2.表示是否发送数据，如果发送数据，格式应当是JSON格式（key：value），不发送数据，可以填入null。
+			//如果发送数据给服务器load方法以post方法提交，否则是以get方式提交。
+			//3。第三个参数是回调函数
+			//4。回调函数的三个参数，第一个是data表示从服务器会送的数据（string），第二是textState表示状态有4个（success,error,notmodify,timeout）;第三个参数xmlHttpRequest对象
+			$('#one').load('loadController.php?date'+Math.random()+"$username="+&('#username').val(),null,function(data,textState,xmlHttpRequest){
+				//alert("服务器返回：" + data);
+				$(this).text(data);
+			});
+		});*/
+
+		
+		//load的post提交
+		var send_data ={'username':$('#username'),'age':'31',};
+		$('#one').load('loadController.php',send_data,function(data,textState,xmlHttpRequest){
+			//客户端发送json，服务器会送文本
+				//alert("服务器返回：" + data);
+				//$(this).text(data);
+
+				//客户端发送json，服务器会送json
+				//var obj = eval("(" + data + ")");
+				//alert(obj.res + ':' + obj.info);
+
+				//客户端发送json，服务器会送xml
+				//alert(data + typeof data);
+				var res = xmlHttpRequest.responseXml;
+				var result = res.getElementByTagName('res');
+				alert(res[0].childNodes[0].nodeValue);
+				
+			});
+	});
+</script>
+</html>
